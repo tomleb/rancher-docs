@@ -33,15 +33,17 @@ jobs:
 
       - name: Download docs artifact
         uses: actions/download-artifact@v4
+        id: download
         with:
           name: api-docs
           run-id: ${{ github.event.inputs.rancher_run_id }}
           github-token: ${{ github.token }}
           repository: rancher/rancher
+          path: '.'
 
       - name: Create PR
         run: |
-          ls -l
+          ls -ltr
           mv api-docs openapi/swagger-v2.11.json
           BRANCH="sync-docs-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
