@@ -39,12 +39,10 @@ jobs:
           run-id: ${{ github.event.inputs.rancher_run_id }}
           github-token: ${{ github.token }}
           repository: rancher/rancher
-          path: /tmp/ok
 
       - name: Create PR
         run: |
-          ls -ltr /tmp /tmp/ok
-          mv /tmp/ok/api-docs openapi/swagger-v2.11.json
+          mv docs.json openapi/swagger-v2.11.json
           BRANCH="sync-docs-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
           git checkout -b "$BRANCH"
