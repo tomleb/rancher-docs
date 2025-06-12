@@ -42,7 +42,7 @@ jobs:
 
       - name: Create PR
         run: |
-          mv docs.json openapi/swagger-v2.11.json
+          mv docs.json openapi/swagger-v2.10.json
           BRANCH="sync-docs-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
           echo "BRANCH=${BRANCH}" >> $GITHUB_ENV
           git checkout -b "$BRANCH"
